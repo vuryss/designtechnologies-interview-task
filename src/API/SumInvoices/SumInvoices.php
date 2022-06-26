@@ -17,6 +17,7 @@ use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpKernel\Attribute\AsController;
 use Symfony\Component\HttpKernel\Exception\BadRequestHttpException;
+use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 use Symfony\Component\Routing\Annotation\Route;
 
 #[AsController]
@@ -78,7 +79,7 @@ class SumInvoices
             $customer = $this->customerRepository->get($customerVatFilter);
 
             if (!$customer) {
-                throw new BadRequestHttpException('Customer with the specified VAT not found');
+                throw new NotFoundHttpException('Customer with the specified VAT not found');
             }
 
             return [$customer];

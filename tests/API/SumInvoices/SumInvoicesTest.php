@@ -144,7 +144,7 @@ class SumInvoicesTest extends WebTestCase
 
         $response = $client->getResponse();
 
-        $this->assertEquals(400, $response->getStatusCode());
+        $this->assertEquals(404, $response->getStatusCode());
 
         $response = json_decode($response->getContent(), true, flags: JSON_THROW_ON_ERROR);
 
